@@ -32,7 +32,7 @@ function singlePai(uid) {
     var priceMax = $('#max_price').val();
     var increase = parseInt($('#increase').val(),10);
 
-    var queryIt = "http://paimai.jd.com/json/current/englishquery?paimaiId=" + uid + "&skuId=0&t=" + getRamdomNumber() + "&start=0&end=9";
+    var queryIt = "https://paipai.jd.com/auction-detail/" + uid + "&skuId=0&t=" + getRamdomNumber() + "&start=0&end=9";
     $.get(queryIt, function(data) {
 
         if (my_price < data.currentPrice) {
@@ -44,7 +44,7 @@ function singlePai(uid) {
             if(remainTime > 3000 || remainTime < 50)
             {
                 if (price <= priceMax) {
-                    var buyIt = "http://paimai.jd.com/services/bid.action?t=" + getRamdomNumber() + "&paimaiId=" + uid + "&price=" + price + "&proxyFlag=0&bidSource=0";
+                    var buyIt = "https://paipai.jd.com/auction-detail/services/bid.action?t=" + getRamdomNumber() + "&paimaiId=" + uid + "&price=" + price + "&proxyFlag=0&bidSource=0";
                     $.get(buyIt, function(data) {
                         if (data !== undefined) {
                             if (data.result == "200") {
